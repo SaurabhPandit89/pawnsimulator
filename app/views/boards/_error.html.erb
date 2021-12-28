@@ -1,0 +1,7 @@
+<div class='messages'>
+  <ul class='message_list'>
+    <% if pawn_placed?(@move) && !pawn_moved_once?(@move) %>
+      <li>PLACE <%= @move.x_coordinate %> <%= @move.y_coordinate %> <%= @move.move_direction %> <%= @move.pawn_color %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,65 @@
+<center>
+  <h2>Pawn Simulator</h2>
+  <br/><br/>
+  <div style='border: 1px solid black; width: 60%'>
+    <table class='main_table'>
+      <tr style='colspan: 2;'>
+        <th>
+          <table class='board_table'>
+            <tr>
+              <td class='outer'></td>
+              <% 8.times do |i|%>
+                <td class='outer'><%= i+1 %></td>
+              <% end %>
+            </tr>
+            <% (0..7).reverse_each do |j| %>
+              <% color_set = cycle('color_set1', 'color_set2')%>
+              <tr>
+                <td class='outer'><%= j+1 %></td>
+                <% 8.times do |i| %>
+                  <td id='block_<%= j+1 %>_<%= i+1%>' class='inner' style='background-color: <%= block_color(color_set, i) %>;'>
+                    <% if j+1 == move_y(@move) && i+1 == move_x(@move) %>
+                      <%= image_tag pawn_image(@move), size: '40x35' %>
+                    <% end %>
+                  </td>
+                <% end %>
+                <td class='outer'><%= j+1 %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td class='outer'></td>
+              <% 8.times do |i| %>
+                <td class='outer'><%= i+1 %></td>
+              <% end %>
+            </tr>
+          </table>
+        </th>
+        <th class='scrollable'>
+          <div class='message_log'>
+            <%= render 'error' %>
+          </div>
+        </th>
+      </tr>
+    </table>
+    <br/><br/>
+    <div class='control_form'>
+      <table class='board_table' style='width: 100%;height: 100px;border: 0px;'>
+        <% unless pawn_placed?(@move) %>
+          <tr><td><%= render 'moves/place_form' %></td></tr>
+        <% else %>
+          <tr>
+            <th><%= render 'moves/move_form' %></th>
+            <th><%= render 'moves/left' %></th>
+            <th><%= render 'moves/right' %></th>
+            <th>
+              <%= form_tag move_url(@move), method: :get, remote: true do %>
+                <%= submit_tag 'REPORT' %>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+      </table>
+      <%= link_to('RESET', move_url(@move), method: :delete) if pawn_placed?(@move) %>
+    </div>
+  </div>
+</center>

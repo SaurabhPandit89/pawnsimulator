@@ -1,0 +1,11 @@
+<div>
+  <center>
+    <%= form_tag moves_url, remote: true do %>
+      <%= number_field_tag 'place[x_coordinate]', 1, in: 1..8 %>
+      <%= number_field_tag 'place[y_coordinate]', 1, in: 1..8 %>
+      <%= select_tag 'place[move_direction]', options_for_select(facing_options) %>
+      <%= select_tag 'place[pawn_color]', options_for_select(color_options) %>
+      <%= submit_tag 'PLACE' %>
+    <% end %>
+  </center>
+</div>

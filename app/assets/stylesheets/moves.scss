@@ -1,0 +1,22 @@
+// Place all the styles related to the moves controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.control_form input[type=number] {
+  width: 50px;
+}
+
+.control_form select {
+  width: 100px;
+}
+
+input[type=submit] {
+  width: 80px;
+  padding:5px 15px; 
+  background:#ccc; 
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+}

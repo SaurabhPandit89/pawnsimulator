@@ -1,0 +1,8 @@
+<div class='right_form'>
+  <%= form_tag move_url(@move), method: :put, remote: true do %>
+    <div class='right_hidden_tag'>
+      <%= hidden_field_tag 'move[move_direction]', right_of[@move.move_direction.to_sym] %>
+    </div>
+    <%= submit_tag 'RIGHT' %>
+  <% end %>
+</div>

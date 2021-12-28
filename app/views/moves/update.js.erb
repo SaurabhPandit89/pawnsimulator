@@ -1,0 +1,13 @@
+jQuery("#block_<%= @previous_move.y_coordinate %>_<%= @previous_move.x_coordinate %>").html('');
+jQuery("#block_<%= @move.y_coordinate %>_<%= @move.x_coordinate %>").html("<%= escape_javascript(image_tag pawn_image(@move), size: '40x35') %>");
+
+jQuery("ul.message_list").append("<li><%= build_message_log(@move_type, @previous_move, @coordinate_type) %></li>");
+
+jQuery("div.select_tag select").html('');
+jQuery("div.select_tag").html("<%= escape_javascript(select_tag move_coordinate(@move), options_for_select(move_options(@move))) %>");
+
+jQuery("div.right_hidden_tag").html('');
+jQuery("div.right_hidden_tag").html("<%= escape_javascript(hidden_field_tag 'move[move_direction]', right_of[@move.move_direction.to_sym])%>");
+
+jQuery("div.left_hidden_tag").html('');
+jQuery("div.left_hidden_tag").html("<%= escape_javascript(hidden_field_tag 'move[move_direction]', left_of[@move.move_direction.to_sym])%>");

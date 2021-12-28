@@ -1,0 +1,8 @@
+<div class='move_form'>
+  <%= form_tag move_url(@move), method: :put, remote: true do %>
+    <div class='select_tag'>
+      <%= select_tag move_coordinate(@move), options_for_select(move_options(@move)) %>
+    </div><br/>
+    <%= submit_tag 'MOVE' %>
+  <% end %>
+</div>
